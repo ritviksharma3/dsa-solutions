@@ -1,0 +1,54 @@
+{
+    public:
+    void merge(int arr[], int l, int m, int r)
+    {        
+         vector<int>vec(r-l+1);
+         int sz = r-l+1;
+         for(int i=0;i<sz;i++)
+         {
+             vec[i] = arr[i+l];
+         }
+         int pt1 = 0,pt2 = m-l+1;
+         int curr = l;
+         while((pt1 <= (m-l)) && (pt2 <= (r-l)))
+         {
+             if(vec[pt1] <= vec[pt2])
+             {
+                 arr[curr] = vec[pt1];
+                 pt1++;
+             }
+             else
+             {
+                 arr[curr] = vec[pt2];
+                 pt2++;
+             }
+             curr++;
+         }
+         if(pt2 == (r-l+1))
+         {
+             for(int i=pt1;i<=(m-l);i++)
+             {
+                 arr[curr] = vec[i];
+                 curr++;
+             }
+         }
+         else
+         {
+             for(int i=pt2;i<=(r-l);i++)
+             {
+                 arr[curr] = vec[i];
+                 curr++;
+             }
+         }
+         
+    }
+    public:
+    void mergeSort(int arr[], int l, int r)
+    {
+        if(l == r) return;
+        int mid = l + (r-l)/2;
+        mergeSort(arr,l,mid);
+        mergeSort(arr,mid+1,r);
+        merge(arr,l,mid,r);
+    }
+};
