@@ -1,5 +1,5 @@
 # Program: Trie Implementation. Insertion, Search, Search prefix
-# __Author__: Ayush Jaipuriyar
+# __Author__: Yashwant aditya
 
 class Trie(object):
     """
